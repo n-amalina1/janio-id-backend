@@ -24,6 +24,7 @@ func SetupRoutes(d *sql.DB) {
 		MaxAge:           12 * time.Hour,
 	}))
 	router.GET("id/orders", GetOrdersIDProvider)
+	// router.POST("id/order/update", PostStatus)
 
 	router.Run("localhost:8443")
 }
@@ -36,3 +37,15 @@ func GetOrdersIDProvider(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusOK, orders)
 }
+
+/*func PostStatus(c *gin.Context) {
+	var status models.IDOrderStatus
+
+	c.BindJSON(&status)
+
+	orderStatus, errS := api.PostStatusIDProvider(db, status)
+	if errS != nil {
+		c.IndentedJSON(http.StatusNotFound, gin.H{"message": errS.Error()})
+	}
+	c.IndentedJSON(http.StatusOK, orderStatus)
+}*/

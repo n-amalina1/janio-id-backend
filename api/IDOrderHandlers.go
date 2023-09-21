@@ -29,3 +29,21 @@ func GetOrdersIDProvider(db *sql.DB) (models.IDProviderOrdersParams, error) {
 
 	return IDProviderOrdersParams, nil
 }
+
+/*func PostStatusIDProvider(db *sql.DB, status models.IDOrderStatus) (models.IDOrderStatus, error) {
+	json, err := json.Marshal(
+		models.IDOrderStatus{
+			OrderID:     status.OrderID,
+			OrderStatus: status.OrderStatus,
+		})
+	if err != nil {
+		return models.IDOrderStatus{}, fmt.Errorf("update Status DB: %v", err)
+	}
+
+	_, errS := http.Post("http://localhost:8080/id/order/update", "application/json", bytes.NewBuffer(json))
+	if errS != nil {
+		return models.IDOrderStatus{}, fmt.Errorf("update Status DB: %v", errS)
+	}
+
+	return status, nil
+}*/

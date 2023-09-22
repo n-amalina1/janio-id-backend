@@ -3,6 +3,7 @@ package routes
 import (
 	"database/sql"
 	api "janio-id-backend/api"
+	"janio-id-backend/models"
 	"net/http"
 	"time"
 
@@ -24,7 +25,7 @@ func SetupRoutes(d *sql.DB) {
 		MaxAge:           12 * time.Hour,
 	}))
 	router.GET("id/orders", GetOrdersIDProvider)
-	// router.POST("id/order/update", PostStatus)
+	router.POST("id/order/update", PostStatus)
 
 	router.Run("localhost:8443")
 }
@@ -38,7 +39,7 @@ func GetOrdersIDProvider(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, orders)
 }
 
-/*func PostStatus(c *gin.Context) {
+func PostStatus(c *gin.Context) {
 	var status models.IDOrderStatus
 
 	c.BindJSON(&status)
@@ -48,4 +49,4 @@ func GetOrdersIDProvider(c *gin.Context) {
 		c.IndentedJSON(http.StatusNotFound, gin.H{"message": errS.Error()})
 	}
 	c.IndentedJSON(http.StatusOK, orderStatus)
-}*/
+}

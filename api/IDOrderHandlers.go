@@ -1,8 +1,10 @@
 package api
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"io"
 	"janio-id-backend/models"
 	"net/http"
@@ -30,7 +32,7 @@ func GetOrdersIDProvider(db *sql.DB) (models.IDProviderOrdersParams, error) {
 	return IDProviderOrdersParams, nil
 }
 
-/*func PostStatusIDProvider(db *sql.DB, status models.IDOrderStatus) (models.IDOrderStatus, error) {
+func PostStatusIDProvider(db *sql.DB, status models.IDOrderStatus) (models.IDOrderStatus, error) {
 	json, err := json.Marshal(
 		models.IDOrderStatus{
 			OrderID:     status.OrderID,
@@ -46,4 +48,4 @@ func GetOrdersIDProvider(db *sql.DB) (models.IDProviderOrdersParams, error) {
 	}
 
 	return status, nil
-}*/
+}
